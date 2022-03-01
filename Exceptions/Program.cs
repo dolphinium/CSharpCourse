@@ -20,10 +20,7 @@ namespace Exceptions
             {
                 Console.WriteLine(exception.Message);
             }
-            catch (Exception exception)
-            {
-
-            }
+           
 
             HandleException(() =>
             {
