@@ -52,7 +52,7 @@ namespace Attributes
         }
     }
 
-    [AttributeUsage(AttributeTargets.Property,AllowMultiple = false)]  // Use pipe for multiple targets  ||| Allow multiple lets you use multiple attributes
+    [AttributeUsage(AttributeTargets.Property,AllowMultiple = false)]  // Use pipe for multiple targets  ||| Allow multiple, lets you use multiple attributes
     class RequiredPropertyAttribute:Attribute
     {
         
