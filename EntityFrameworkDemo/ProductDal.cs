@@ -18,6 +18,42 @@ namespace EntityFrameworkDemo
             }
         }
 
+        public List<Product> GetByName(string key)
+        {
+            using (ETradeContext context = new ETradeContext()) // for disposing (provides less memory usage)
+            {
+                return context.Products.Where(p=>p.Name.Contains(key)).ToList();
+
+            }
+        }
+
+        public List<Product> GetByUnitPrice(decimal price)
+        {
+            using (ETradeContext context = new ETradeContext()) // for disposing (provides less memory usage)
+            {
+                return context.Products.Where(p => p.UnitPrice>=price).ToList();
+
+            }
+        }
+
+        public List<Product> GetByUnitPrice(decimal min,decimal max)
+        {
+            using (ETradeContext context = new ETradeContext()) // for disposing (provides less memory usage)
+            {
+                return context.Products.Where(p => p.UnitPrice >= min && p.UnitPrice<=max ).ToList();
+
+            }
+        }
+
+        public Product GetById(int id)
+        {
+            using (ETradeContext context = new ETradeContext()) // for disposing (provides less memory usage)
+            {
+                var result = context.Products.FirstOrDefault(p => p.Id == id);  //SingleOrDefault method also can be used but it's not preferred for multiple data may receive.
+                return result;
+            }
+        }
+
         public void Add(Product product)
         {
             using (ETradeContext context = new ETradeContext()) // for disposing (provides less memory usage)
