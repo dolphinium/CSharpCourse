@@ -12,6 +12,42 @@ namespace Exceptions
         {
             //ExceptionIntro();
 
+            //TryCatch();
+
+
+            //ActionDemo();
+
+            Func<int, int, int> add = Add;      // func example
+            Console.WriteLine(add(3, 5));
+
+            Func<int> getRandomNumber = delegate()
+            {
+                Random random = new Random();
+                return random.Next(1, 100);
+            };
+
+            Func<int> getRandomNumber2 = () => new Random().Next(1, 100);
+
+            Console.WriteLine(getRandomNumber2());
+
+            //Console.WriteLine(Add(2,3));
+
+
+            Console.ReadLine();
+        }
+
+        static int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        private static void ActionDemo()
+        {
+            HandleException(() => { CustomException(); });
+        }
+
+        private static void TryCatch()
+        {
             try
             {
                 CustomException();
@@ -20,14 +56,6 @@ namespace Exceptions
             {
                 Console.WriteLine(exception.Message);
             }
-           
-
-            HandleException(() =>
-            {
-                CustomException();
-            });
-
-            Console.ReadLine();
         }
 
         private static void HandleException(Action action)
@@ -39,7 +67,6 @@ namespace Exceptions
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
-               
             }
         }
 
